@@ -1,0 +1,159 @@
+@import "./mixins.scss";
+@import "./fonts.scss";
+
+/*==========================================*/
+
+$minwidth: 320px;
+$mw: 1292;
+$md1: $mw + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
+
+/*==========================================*/
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: "Roboto";
+    color: #ffff;
+    background: #121516;
+    font-size: 14px;
+}
+body._lock {
+    overflow: hidden;
+}
+a {
+    text-decoration: none;
+    color: #fff;
+}
+ul {
+    list-style-type: none;
+}
+.wrapper {
+    min-height: 100%;
+    overflow: hidden;
+    overflow-x: hidden;
+}
+/*==========================================*/
+
+._container {
+    max-width: $mw + px;
+    margin: 0 auto;
+    @include small-desktop-min {
+        padding: 0 30px;
+    }
+    @include small-tablet {
+        max-width: none;
+        padding: 0 25px;
+    }
+}
+// ===========================================================
+.text {
+    font-family: 'Niramit';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 23px;
+
+    color: rgba(255, 255, 255, 0.8);
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 45px;
+
+    position: relative;
+
+    background: linear-gradient(260.46deg, #ff7551 -6.69%, #ff4819 103.75%);
+    // background: linear-gradient(260.46deg, #865BCE -6.69%, #5721B3 103.75%);
+    border-radius: 20px;
+
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    /* identical to box height */
+
+    color: #ffffff;
+    // transition: background-color 2s ease-out;
+    transition: background-position 300ms ease-in;
+    &:hover {
+        // background: linear-gradient(260.46deg, #6E4CA9 -6.69%, #3B1877 103.75%);
+        background: linear-gradient(260.46deg, #ff4f21 -6.69%, #bf2700 103.75%);
+    }
+}
+.product-img {
+    margin: auto 0;
+    // overflow: hidden;
+    img {
+        max-width: 100%;
+    }
+}
+.product-title {
+    font-family: "Hind Madurai";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: calc(36 / 26 * 100%);
+}
+.title {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 37px;
+    /* identical to box height */
+
+    @include tablet {
+        font-size: 40px;
+    }
+}
+.page {
+    flex: 1 1 auto;
+}
+
+.iframe-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.iframe-container iframe,  
+.iframe-container object,  
+.iframe-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.video-wrapper {
+    // padding: 0 123px;
+    margin: 0 auto 80px auto;
+    width: 1043px;
+    max-width: 100%;
+}
+
+.map {
+    width: 100%;
+    height: 600px;
+    margin: 0 0 80px 0;
+}
+/*==========================================*/
+@import "_header_submenu.scss";
+/*==========================================*/
+@import "_index.scss";
+@import "games.scss";
+@import "about_game.scss";
+@import "_news.scss";
+@import "_location.scss";
+@import "_about.scss";
+/*==========================================*/
+@import "_footer.scss";

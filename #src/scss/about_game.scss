@@ -1,0 +1,185 @@
+.background-game {
+    &__container {
+        img {
+            width: 100%;
+        }
+    }
+}
+.about-game-block {
+    &__container {
+        padding: 80px 0;
+    }
+
+    &__title {
+        text-align: center;
+        font-size: 72px;
+        margin: 0 0 100px 0;
+    }
+    &__contents {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 123px;
+    }
+    &__content-text {
+        max-width: 540px;
+        width: 100%;
+        padding: 0 25px 0 0;
+    }
+    &__title-content {
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 37px;
+        margin: 0 0 27px 0;
+    }
+    &__text {
+    }
+    &__technical-info {
+        margin: auto 0;
+        padding: 50px 60px;
+        border-radius: 10px;
+        background: rgba(87, 87, 87, 0.2);
+        backdrop-filter: blur(4px);
+    }
+    &__manufacturer {
+        font-family: "Niramit";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 47px;
+        text-align: center;
+        margin: 0 0 30px 0;
+    }
+    &__tools {
+        margin: 0 0 20px 0;
+    }
+    &__item {
+        margin: 0 80px 0 0;
+    }
+    &__cost {
+        text-align: center;
+        font-family: "Niramit";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 31px;
+        &::before {
+            content: "\0024";
+        }
+    }
+}
+.tools-list {
+    display: flex;
+    &__item {
+        // margin: 0 80px 0 0;
+        // &:last-child {
+        //     margin: 0;
+        // }
+    }
+}
+
+.gallery {
+    padding: 100px 0;
+    // .gallery__swiper
+
+    &__swiper {
+    }
+}
+.swiper {
+    &_height-gallery {
+        max-height: 500px;
+    }
+}
+.swiper-wrapper {
+}
+.swiper-slide {
+    &__gallery {
+        display: flex;
+        justify-content: center;
+    }
+    &__picture {
+        img {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
+.description-game {
+    &__container {
+        padding: 0 0 81px 0;
+    }
+    &__description-row {
+        padding: 0 123px;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 0 0 81px 0;
+    }
+    &__column {
+        max-width: 300px;
+        width: 100%;
+        margin: 0 20px 20px 20px;
+    }
+    &__item {
+    }
+    &__title {
+        font-weight: 500;
+        font-size: 28px;
+        margin: 0 0 25px 0;
+    }
+    &__text {
+    }
+}
+
+@include small-desktop-min {
+    .about-game-block {
+        &__container {
+            margin: 80px 0;
+        }
+    }
+}
+
+@include tablet {
+    .about-game-block {
+        &__container {
+        }
+        &__contents {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0 10px;
+        }
+        &__content-text {
+            margin: 0 0 35px 0;
+            max-width: none;
+        }
+        &__tools {
+            display: flex;
+            justify-content: center;
+        }
+    }
+
+    .description-game {
+        &__container {
+            padding: 0 0 81px 0;
+        }
+        &__description-row {
+            padding: 0;
+            margin: 0 0 81px 0;
+        }
+        &__column {
+            margin: 0 0 30px 0;
+        }
+        &__item {
+        }
+        &__title {
+            font-weight: 500;
+            font-size: 22px;
+            margin: 0 0 15px 0;
+        }
+        &__text {
+            font-size: 14px;
+        }
+    }
+}
