@@ -11,6 +11,84 @@ if (iconMenu) {
 
 
 
+const isMobile = {
+  Android: function () {
+    return navigator.userAgent.match(/Android/i);
+  },
+  BlackBerry: function () {
+    return navigator.userAgent.match(/BlackBerry/i);
+  },
+  iOS: function () {
+    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+  },
+  Opera: function () {
+    return navigator.userAgent.match(/Opera Mini/i);
+  },
+  Windows: function () {
+    return navigator.userAgent.match(/IEMobile/i);
+  },
+  any: function () {
+    return(isMobile.Android()||
+          isMobile.BlackBerry()||
+          isMobile.iOS()||
+          isMobile.Opera()||
+          isMobile.Windows()
+    )
+  }
+};
+
+if(isMobile.any()){
+  document.body.classList.add('_touch');
+
+  let menuArrows = document.querySelectorAll('.menu__arrow');
+  
+  if(menuArrows.length > 0){
+    for (let index = 0; index < menuArrows.length; index++) {
+      
+      const menuArrow = menuArrows[index];
+      
+      menuArrow.addEventListener('click', onMenuArrowClick);
+      
+      function onMenuArrowClick(e) {
+          menuArrow.parentElement.classList.toggle('_active-menu');        
+      }
+    }
+  }
+}else{
+  document.body.classList.add('_pc');
+}
+
+
+
+
+
+const menuLinks = document.querySelectorAll('.menu__link[data-goto]');
+if(menuLinks.length > 0){
+  
+  menuLinks.forEach(menuLink =>{
+    menuLink.addEventListener('click', onMenuLinkClick);
+  });
+
+  function onMenuLinkClick(e) {
+    const menuLink = e.target;
+
+    if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) {
+      const gotoBlock = document.querySelector(menuLink.dataset.goto);
+      // if you need fixed menu
+      // const gotoBlockValue = gotoBlock.getBoundingClientRect().top + pageYOffset - document.querySelector('header').offsetHeight;
+      const gotoBlockValue = gotoBlock.getBoundingClientRect().top + pageYOffset;
+    
+
+      window.scrollTo({
+        top: gotoBlockValue,
+        behavior: "smooth"
+      });
+      e.preventDefault();
+    }
+  }
+}
+
+
 const swiper = new Swiper('.swiper', {
   // Optional parameters
   direction: 'horizontal',
@@ -23,10 +101,10 @@ const swiper = new Swiper('.swiper', {
     clickable: true,
     dynamicBullets: true,
 
-    renderBullet: function (index, className)
-    {
-      return '<img class ="' + className + '" src="../img/quote/' + (index + 1) + '.svg" alt="">';
-    }
+    // renderBullet: function (index, className)
+    // {
+    //   return '<img class ="' + className + '" src="../img/quote/' + (index + 1) + '.svg" alt="">';
+    // }
 
 
   },
@@ -36,6 +114,13 @@ const swiper = new Swiper('.swiper', {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
+
+  // // And if we need scrollbar
+  // scrollbar: {
+  //   el: '.swiper-scrollbar',
+  //   draggable: true,
+  //   cssMode:true
+  // },
 
   //Turn Touch grab function on PC
   simulateTouch: true,
@@ -78,11 +163,7 @@ const swiper = new Swiper('.swiper', {
 
   autoHeight: false,
 
-
-
   centeredSlides: true,
-
-
 
   autoplay:
   {
@@ -94,7 +175,7 @@ const swiper = new Swiper('.swiper', {
     disableOnInteraction: false
   },
 
-  speed: 1500,
+  speed: 3000,
 
   slidesPerView: 1,
 
@@ -107,6 +188,216 @@ const swiper = new Swiper('.swiper', {
     320: {
       slidesPerView: 1,
       spaceBetween: 10
-    }
+    },
+    // when window width is >= 480px
+    480: {
+      slidesPerView: 1,
+      spaceBetween: 25
+    },
+    575:{
+      slidesPerView: 1,
+      spaceBetween: 25
+    },
+    // when window width is >= 640px
+    767: {
+      slidesPerView: 2,
+      spaceBetween: 30
+    },
+    992: {
+      slidesPerView: 3,
+      spaceBetween: 40
+    },
+    1366:{
+      slidesPerView: 1.7,
+      spaceBetween: 40
+    },
+    1630:{
+      slidesPerView: 2,
+      spaceBetween: 40
+    },
+    2100:{
+      slidesPerView: 2.5,
+      spaceBetween: 40
+    },
+
   }
 });
+// const swiper = new Swiper('.swiper', {
+//   // Optional parameters
+//   direction: 'horizontal',
+//   // loop: true,
+
+//   // // If we need pagination
+//   pagination: {
+//     el: '.swiper-pagination',
+    
+//     clickable: true,
+//     dynamicBullets: true,
+//     //Numiration
+//     // renderBullet: function (index, className)
+//     // {
+//     // return '<span class ="' + className + '">' + (index + 1) + '</span>';
+//     // }
+//     // renderBullet: function (index, className)
+//     // {
+//     // return '<img class ="' + className + '" src="img/' + (index + 1) + '.svg" alt="">';
+//     // }
+
+//     /*
+//     type: 'fraction',
+//     //Custom
+//     renderFraction: function (currentClass, totalClass)
+//     {
+//       return 'Картинка <span class = "' + currentClass + '"></span>' + ' из ' + '<span class = "' + totalClass + '"></span>';
+//     }
+//     */
+//     /*
+//     type: 'progressbar'
+//     */
+//   },
+
+//   // Navigation arrows
+//   navigation: {
+//     nextEl: '.swiper-button-next',
+//     prevEl: '.swiper-button-prev',
+//   },
+
+//   // // And if we need scrollbar
+//   scrollbar: {
+//     el: '.swiper-scrollbar',
+//     draggable: true,
+//     cssMode:true
+//   },
+
+//   //Turn Touch grab function on PC
+//   simulateTouch: true,
+//   //Sensitivity of swipe
+//   touchRatio: 1,
+//   //Angle of working swipe
+//   touchAngle: 45,
+//   //Grab coursor
+//   grabCursor: true,
+  
+//   //Switching with click to slide
+//   slideToClicledSlide: true,
+
+//   //Navigation with hash
+//   hashNavigation:
+//   {
+//     //watch state of hash
+//     watchState: true,
+//   },
+
+//   //keyboard control
+//   keyboard:
+//   {
+//     //turn on/off
+//     enabled: true,
+//     //turn on/off only when slider in area of viewport
+//     onlyInViewport: true,
+//     //turn on/off control with pageUp/pageDown buttons on keyboard
+//     pageUpDown: true,
+//   },
+
+//   //mouse control
+//   mousewheel:
+//   {
+//     sensitivity: 1,
+//     //the object class on which this control wheel be able to use
+//     //P.S. Better to not use it if u got more then one swiper with this slider's name
+//     eventsTarget: ".swiper-slide"
+//   },
+
+//   autoHeight: false,
+
+//   // slidesPerView: 1,
+
+//   // slidesPerGroup: 1,
+
+//   centeredSlides: false,
+
+//   //if u need to make slides direction right to left
+//   //add for swiper container 'dir="rtl"'
+
+//   //before using it turn off autoHeight!!!
+//   //slidesPerColumn: 2,
+//   //add to js:
+//   /*
+//   .swiper
+//   {
+//     height: 700px;
+//   }
+//   .swiper .swiper-slide
+//   {
+//     height: calc((100% - 30px) / 2);
+//     overflow: hidden;
+//   }
+//   */
+
+//   //for better experience turn off autoHeight
+//   //freeMode: true,
+
+//   autoplay:
+//   {
+//     //pause between play
+//     delay: 1000,
+//     //end on last slide
+//     stopOnLastSlide: false,
+//     //turn off ofter interaction
+//     disableOnInteraction: false
+//   },
+
+//   speed: 500,
+
+//   // effect: 'fade',
+//   // fadeEffect:
+//   // {
+//   // //parallel fade changing
+//   // crossFade: true
+//   // },
+
+//   // effect: 'flip',
+//   // flipEffect:
+//   // {
+//   // slideShadows: true,
+//   // //show only active slide
+//   // limitRotation: true
+//   // },
+
+//   // effect: 'cube',
+//   // cubeEffect:
+//   // {
+//   // slideShadows: true,
+//   // shadow: true,
+//   // shadowOffset: 20,
+//   // shadowScale: 0.94
+//   // },
+
+//   // effect: 'coverflow',
+//   // coverflowEffect:
+//   // {
+//   // rotate: 20,
+//   // stretch: 50,
+//   // slideShadows: true,
+//   // },
+
+//   // effect: 'slide',
+
+//   // //adaptive
+//   breakpoints:
+//   {
+//     425:
+//     {
+//       slidesPerView: 1,
+//     },
+//     768:
+//     {
+//       slidesPerView: 2,
+//     },
+//     1024:
+//     {
+//       slidesPerView: 3,
+//       spaceBetween: 39  
+//     }
+//   }
+// });

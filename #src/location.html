@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.min.css">
+
+    <link rel="shortcut icon" href="./img/icon/1.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <title>The last of us</title>
+</head>
+
+<body>
+    @@include('_header.html')
+    <div class="wrapper">
+        <main class="page">
+            <section class="block-info">
+                <div class="block-info__container _container">
+                    <div class="block-info__infos">
+                        <div class="block-info__title title">
+                            Contact us
+                        </div>
+                        <div class="block-info__about-info">
+                            <div class="block-info__email">
+                                <a href="mailto:aboutgame@gmail.com">aboutgame@gmail.com</a>
+                                <img src="./img/icon/email.svg" alt="email">
+                            </div>
+                            <div class="block-info__phone">
+                                <a href="tel:+442045772187">+44 20 457-721-87</a>
+                                <img src="./img/icon/phone.svg" alt="time">
+                            </div>
+                            <div class="block-info__location">
+                                <div>
+                                    Aesera Architects London<br>A3211, London SW1A 2HZ,
+                                </div>
+                                <img src="./img/icon/location.svg" alt="location">
+                            </div>
+                        </div>
+                        <div class="block-info__social-network social-network">
+                            <div class="social-network__item">
+                                <a href="https://www.instagram.com/nzxtspain/" target="_blank">
+                                    <img src="./img/icon/instagram.svg" alt="instagram">
+                                </a>
+                            </div>
+                            <div class="social-network__item">
+                                <a href="https://www.facebook.com/groups/1340008369527805/?ref=share" target="_blank">
+                                    <img src="./img/icon/facebook.svg" alt="facebook">
+                                </a>
+                            </div>
+                            <div class="social-network__item">
+                                <a href="https://twitter.com/VideoGames" target="_blank">
+                                    <img src="./img/icon/twitter.svg" alt="twitter">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-info__forms forms-contact">
+                        <div class="forms-contact__title">
+                            Send your comment
+                        </div>
+                        <form name="contactus" action="">
+                            <div class="forms-contact__name">
+                                <label for="name" class="forms-contact__title-input">Name:</label>
+                                <input type="text" name="name" id="name" placeholder="Name" required="">
+                            </div>
+                            <div class="forms-contact__email">
+                                <label for="email" class="forms-contact__title-input">E-mail:</label>
+                                <input type="email" name="email" id="email" placeholder="E-mail" required="">
+                            </div>
+                            <div class="forms-contact__texts">
+                                <label for="message" class="forms-contact__title-input">Message:</label>
+                                <textarea name="message" id="messageText" cols="30" rows="5" placeholder="Message"
+                                    required=""></textarea>
+                            </div>
+                            <div class="forms-contact__buttons">
+                                <div class="forms-contact__cancel">
+                                    <input type="reset" value="Cancel">
+                                </div>
+                                <div class="forms-contact__send">
+                                    <input type="submit" value="Send">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <section class="map">
+                <div class="map__container _container">
+                    <iframe class="map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1241.8127405624248!2d-0.12510702997775383!3d51.50173989714251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487605067d247aa1%3A0x9f0b67129f4cf1ae!2sAesera%20Architects%20London!5e0!3m2!1sru!2sby!4v1636300349503!5m2!1sru!2sby"
+                        style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+                </div>
+            </section>
+        </main>
+    </div>
+    @@include('_footer.html')
+    @@include('js.html')
+</body>
+
+</html>

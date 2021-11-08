@@ -1,30 +1,27 @@
 .header {
     &__container {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        // justify-content: space-between;
-        min-height: 86px;
+        min-height: 80px;
     }
     &__logo {
-        display: none;
+        font-family: "NotoSans";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 41px;
+        line-height: 56px;
         position: relative;
         z-index: 5;
-        .header-logo_icon {
-            font-family: "Tuffy";
-            font-style: normal;
-            font-weight: 600;
-            font-size: 41px;
-            line-height: 61px;
+        padding: 0 0 0 10px ;
+        span {
+            color: #ff7551;
         }
     }
     &__menu {
-        // display: flex;
-        // justify-content: end;
     }
 }
-
 .menu {
-    flex: 1 1 auto;
     position: relative;
     &__icon {
     }
@@ -32,7 +29,6 @@
     }
     &__list {
         display: flex;
-        justify-content: flex-end;
         li {
             margin: 0px 20px;
         }
@@ -41,21 +37,25 @@
         }
     }
     &__link {
-        font-family: "NotoSans";
+        font-family: "Niramit";
         font-style: normal;
         font-weight: normal;
         font-size: 18px;
-        line-height: calc(24.52px / 18px * 100%);
-        transition: color 0.6s ease 0s;
+        line-height: 23px;
+        transition: color 0.8s ease-in-out 0s;
+        // padding: 0 0 30px 0;
+        &:hover {
+            color: #ff7551;
+            font-weight: 600;
+        }
+    }
+    &__arrow {
+        display: none;
     }
 
     &__sub-list {
-        // position: absolute;
-        // top: 80%;
-        // padding: 30px;
-        // min-width: 100px;
         z-index: 4;
-        
+
         visibility: hidden;
         opacity: 0;
         position: absolute;
@@ -71,22 +71,21 @@
             margin: 0;
         }
     }
-    &__arrow {
-        display: none;
-    }
     &__sub-link {
-        color: #fff;
-        font-size: 18px;
+        font-family: "Niramit";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 23px;
     }
 }
-
 .icon-menu {
     display: none;
 }
 
 // SUB MENU
-body._pc .menu__list li:hover > .menu__sub-list, 
-body._pc .menu__list li .menu__sub-list:hover{
+body._pc .menu__list li:hover > .menu__sub-list,
+body._pc .menu__list li .menu__sub-list:hover {
     visibility: visible;
     opacity: 1;
     display: block;
@@ -94,26 +93,18 @@ body._pc .menu__list li .menu__sub-list:hover{
     text-align: left;
     margin: 10px 0 0 0;
     box-shadow: 0px 3px 5px -1px #262628;
-} 
-body._pc .menu__list li .menu__sub-list li{
+}
+body._pc .menu__list li .menu__sub-list li {
     clear: both;
     width: 100%;
     text-align: left;
     // margin-bottom: 20px;
     border-style: none;
-} 
-
-
-// body._pc .menu__list > li:hover .menu__sub-list {
-//     opacity: 1;
-//     visibility: visible;
-//     transform: translate(0px, 0px);
-//     pointer-events: all;
-// }
+}
 
 body._touch .menu__list > li {
     display: flex;
-    align-items: center;
+    // align-items: center;
 }
 body._touch .menu__link {
     flex: 1 1 auto;
@@ -131,30 +122,29 @@ body._touch .menu__arrow {
     border-top: 10px solid #fff;
 }
 body._touch .menu__list > li._active-menu .menu__sub-list {
-    // opacity: 1;
-    // visibility: visible;
-    // transform: translate(0px, 0px);
-    // pointer-events: all;
     visibility: visible;
     opacity: 1;
     display: block;
     min-width: 150px;
     text-align: left;
-    top: 100%;
+    top: 80%;
     box-shadow: 0px 3px 5px -1px #262628;
 }
 body._touch .menu__list > li._active-menu .menu__arrow {
     transform: rotate(-180deg);
 }
+// ПРОБЛЕМА ВОТ ТУТ НАЙТИ!!!!!
 
 @media (min-width: 767px) {
     .menu__link:hover {
         font-weight: 700;
-        color: #efc862;
-        text-decoration: underline;
+        text-decoration-line: underline;
+        color: #ff7551;
+        // color: #865BCE;
     }
     .menu__sub-link:hover {
-        color: #efc862;
+        color: #ff7551;
+        // color: #865BCE;
         text-decoration: underline;
     }
     .menu__list > li {
@@ -171,31 +161,37 @@ body._touch .menu__list > li._active-menu .menu__arrow {
     // }
 }
 
-@include small-tablet {
-    .header {
-        &__container {
-            width: 100%;
+@include tablet{
+    .menu {
+        &__list {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
+            li {
+                margin: 0px 15px;
+            }
+            li:hover {
+                cursor: pointer;
+            }
         }
-
-        &__logo {
-            display: block;
-            margin: 0 0 0 50px;
+        &__sub-list {
+           li {
+                margin: 0 0 20px 0;
+            }
+            li:last-child {
+                margin: 0;
+            }
         }
     }
 }
-// @include tablet-vert {
-//     .menu {
-//         margin: 0 0 0 20px ;
-//         &__list {
-//             display: flex;
-//             justify-content: flex-start;
-//         }
-//     }
-// }
+@include small-tablet {
+    .header {
+        &__logo {
+            font-size: 24px;
+        }
+    }
+   
+}
 
-// BURGER MENU
 
 @include small-tablet {
     .menu {
@@ -261,7 +257,7 @@ body._touch .menu__list > li._active-menu .menu__arrow {
             // position: absolute;
             top: 0;
             left: -200%;
-            width: 90%;
+            width: 88%;
             height: 100%;
             background-color: #262628;
             padding: 120px 40px 40px 40px;
